@@ -12,7 +12,7 @@ import { errorConverter, errorHandler } from './middlewares/error.middleware.js'
 //Initialize express app
 const app = express();
 //declare middlewares
-// app.use(morganMiddleware);
+app.use(morganMiddleware);
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
   next(new ApiError(httpStatus.NOT_FOUND, 'Route not found.'));
 });
 //declare error middlewares
-// app.use(errorConverter);
-// app.use(errorHandler);
+app.use(errorConverter);
+app.use(errorHandler);
 
 export default app;
