@@ -7,20 +7,20 @@ import logger from './utils/logger.js';
 let server;
 mongoose.connect(config.mongodbUri).then(() => {
   server = app.listen(config.port, () => {
-    console.log('==================================');
-    console.log(`======== ENV: ${config.env} ========`);
-    console.log(`🚀 App listening on the port ${config.port}`);
-    console.log('====== Connected to MongoDB ======');
-    console.log('==================================');
+    logger.info('==================================');
+    logger.info(`======== ENV: ${config.env} ========`);
+    logger.info(`🚀 App listening on the port ${config.port}`);
+    logger.info('====== Connected to MongoDB ======');
+    logger.info('==================================');
   });
 });
 
 const exitHandler = () => {
   if (server) {
     server.close(() => {
-      console.log('==================================');
-      console.log('🛑 App stopped');
-      console.log('==================================');
+      logger.warn('==================================');
+      logger.warn('🛑 App stopped');
+      logger.warn('==================================');
     });
   }
 };
@@ -35,9 +35,9 @@ process.on('unhandledRejection', unexpectedErrorHandler);
 
 process.on('SIGTERM', () => {
   if (server) {
-    console.log('==================================');
-    console.log('🛑 App stopped. SIGTERM received');
-    console.log('==================================');
+    logger.warn('==================================');
+    logger.warn('🛑 App stopped. SIGTERM received');
+    logger.warn('==================================');
     server.close();
   }
 });
