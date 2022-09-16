@@ -18,7 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 app.use(compression());
-app.use(cors());
+app.use(cors({
+  origin: 'http://18.136.45.214'
+}));
 //declare routes
 app.get('/', (_req, res) => res.sendStatus(httpStatus.OK));
 app.use('/v1', router);
