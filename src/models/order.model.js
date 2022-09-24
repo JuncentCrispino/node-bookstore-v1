@@ -4,6 +4,9 @@ import search from './plugins/search.plugin.js';
 import toJSON from './plugins/toJSON.plugin.js';
 
 const orderSchema = new mongoose.Schema({
+  paypalOrderId: {
+    type: String
+  },
   customerId: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'User',
@@ -43,11 +46,15 @@ const orderSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    brgy: {
+    barangay: {
       type: String,
       required: true
     },
     city: {
+      type: String,
+      required: true
+    },
+    region: {
       type: String,
       required: true
     }
@@ -59,7 +66,7 @@ const orderSchema = new mongoose.Schema({
         ref: 'Product',
         required: true
       },
-      title: {
+      productName: {
         type: String,
         required: true
       },

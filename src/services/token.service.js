@@ -63,7 +63,6 @@ export async function createNewToken(user, hashToken, tokenType, expiration, ses
 
 export const clearRefreshToken = async (token, tokenType) => {
   const refreshTokenDoc = await Token.deleteOne({ token, type: tokenType });
-  console.log(refreshTokenDoc);
   if (refreshTokenDoc.deletedCount === 0) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Token not found');
   }

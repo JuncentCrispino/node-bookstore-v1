@@ -14,14 +14,15 @@ export const newOrderSchema = {
       building: Joi.string(),
       houseNo: Joi.string(),
       street: Joi.string().required(),
-      brgy: Joi.string().required(),
-      city: Joi.string().required()
+      barangay: Joi.string().required(),
+      city: Joi.string().required(),
+      region: Joi.string().required()
     }),
     orderItems: Joi.array().items(
       Joi.object().keys({
         productId: Joi.string().required(),
         productName: Joi.string().required(),
-        variation: Joi.string().required(),
+        price: Joi.number(),
         qty: Joi.number().required()
       })
     ),
@@ -29,6 +30,7 @@ export const newOrderSchema = {
     isPaid: Joi.boolean().required(),
     paidAt: Joi.date(),
     deliveryStatus: Joi.string().required(),
-    deliveredAt: Joi.date()
+    deliveredAt: Joi.date(),
+    paypalOrderId: Joi.string()
   })
 };

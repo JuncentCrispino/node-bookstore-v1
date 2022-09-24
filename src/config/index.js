@@ -16,7 +16,9 @@ const envVarSchema = Joi.object().keys({
   JWT_ACCESS_EXPIRATION_MINS: Joi.number().required(),
   JWT_REFRESH_EXPIRATION_MINS: Joi.number().required(),
   JWT_VERIFY_EMAIL_EXPIRATION_MINS: Joi.number().required(),
-  JWT_RESET_PASSWORD_EXPIRATION_MINS: Joi.number().required()
+  JWT_RESET_PASSWORD_EXPIRATION_MINS: Joi.number().required(),
+  PAYPAL_CLIENT: Joi.string(),
+  PAYPAL_SECRET: Joi.string()
 }) .unknown();
 
 const { value: envVars, error } = envVarSchema.prefs({ errors: { label: 'key' } }).validate(process.env);
@@ -43,5 +45,9 @@ export default {
     refreshExpirationMins: envVars.JWT_REFRESH_EXPIRATION_MINS,
     verifyMailExpirationMins: envVars.JWT_VERIFY_EMAIL_EXPIRATION_MINS,
     resetPasswordExpirationMins: envVars.JWT_RESET_PASSWORD_EXPIRATION_MINS
+  },
+  paypal: {
+    secret: envVars.PAYPAL_SECRET,
+    client: envVars.PAYPAL_CLIENT
   }
 };

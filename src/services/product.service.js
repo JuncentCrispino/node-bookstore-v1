@@ -101,7 +101,6 @@ export const getProductFilter = (searchText, isActive, category) => {
       }
     );
   }
-  console.log(filter);
   return filter;
 };
 

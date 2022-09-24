@@ -6,20 +6,23 @@ import httpStatus from 'http-status';
 import mongoSanitize from 'express-mongo-sanitize';
 import router from './routes/index.js';
 import ApiError from './utils/ApiError.js';
-import morganMiddleware from './middlewares/morgan.middleware.js';
+import morgan from './middlewares/morgan.middleware.js';
 import { errorConverter, errorHandler } from './middlewares/error.middleware.js';
+import config from './config/index.js';
 
 //Initialize express app
 const app = express();
 //declare middlewares
-app.use(morganMiddleware);
+app.use(morgan.successHandler);
+app.use(morgan.errorHandler);
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 app.use(compression());
 app.use(cors({
-  origin: 'https://store.centapps.online/'
+  origin: 'https://store.centapps.online/',
+  ...(config.env === 'development') && { origin: 'http://127.0.0.1:5173' }
 }));
 //declare routes
 app.get('/', (_req, res) => res.sendStatus(httpStatus.OK));

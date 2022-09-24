@@ -15,6 +15,9 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: true
   },
+  middleName: {
+    type: String
+  },
   password: {
     type: String,
     required: true,
@@ -69,10 +72,13 @@ const userSchema = new mongoose.Schema({
     street: {
       type: String
     },
-    brgy: {
+    barangay: {
       type: String
     },
     city: {
+      type: String
+    },
+    region: {
       type: String
     }
   },
