@@ -7,7 +7,7 @@ import { newOrderSchema } from '../validation/order.validation.js';
 const router = express.Router();
 
 router.post('/', verifyJwt, createOrder);
-router.post('/:orderId/capture', verifyJwt, captureOrder);
+router.post('/:orderId/capture', verifyJwt, validate(newOrderSchema), captureOrder);
 router.get('/', verifyJwt, getOrders);
 
 export { router as orderRoute };
