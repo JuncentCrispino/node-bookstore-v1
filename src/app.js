@@ -22,7 +22,7 @@ app.use(mongoSanitize());
 app.use(compression());
 app.use(cors({
   origin: 'https://store.centapps.online/',
-  ...(config.env === 'development') && { origin: 'http://127.0.0.1:5173' }
+  ...(config.env === 'development') && { origin: 'http://127.0.0.1:5174' }
 }));
 //declare routes
 app.get('/', (_req, res) => res.sendStatus(httpStatus.OK));

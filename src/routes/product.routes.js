@@ -6,10 +6,10 @@ import { productSchema, statusSchema } from '../validation/product.validation.js
 
 const router = express.Router();
 
+router.get('/categories', getProductCategory);
 router.get('/:productId', getProductById);
 router.post('/', verifyJwt, validate(productSchema), addProduct);
 router.get('/', getProducts);
-router.get('/categories', getProductCategory);
 router.patch('/:productId', verifyJwt, validate(statusSchema), archiveProduct);
 router.put('/:productId', verifyJwt, validate(productSchema), updateProduct);
 
