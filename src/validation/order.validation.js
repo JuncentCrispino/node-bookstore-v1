@@ -5,14 +5,14 @@ export const newOrderSchema = {
     user: Joi.object().keys({
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
-      middleName: Joi.string(),
-      email: Joi.string(),
+      middleName: Joi.string().allow(null),
+      email: Joi.string().allow(null),
       mobileNo: Joi.string().required()
     }),
     shippingAddress: Joi.object().keys({
-      unit: Joi.string(),
-      building: Joi.string(),
-      houseNo: Joi.string(),
+      unit: Joi.string().allow(null),
+      building: Joi.string().allow(null),
+      houseNo: Joi.string().allow(null),
       street: Joi.string().required(),
       barangay: Joi.string().required(),
       city: Joi.string().required(),
