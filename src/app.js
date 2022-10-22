@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 app.use(compression());
 app.use(cors({
-  origin: 'https://store.centapps.online/',
+  origin: config.appDomain,
   ...(config.env === 'development') && { origin: 'http://localhost:3000' }
 }));
 //declare routes

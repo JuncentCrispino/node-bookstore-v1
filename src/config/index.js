@@ -19,7 +19,7 @@ const envVarSchema = Joi.object().keys({
   JWT_RESET_PASSWORD_EXPIRATION_MINS: Joi.number().required(),
   PAYPAL_CLIENT: Joi.string(),
   PAYPAL_SECRET: Joi.string()
-}) .unknown();
+}).unknown();
 
 const { value: envVars, error } = envVarSchema.prefs({ errors: { label: 'key' } }).validate(process.env);
 
