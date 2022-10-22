@@ -1,6 +1,6 @@
 module.exports = {
-  apps : [{
-    name: 'app',
+  apps: [{
+    name: 'bookstore_node',
     script: 'src/index.js',
     env: {
       NODE_ENV: 'development'
