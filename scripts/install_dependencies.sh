@@ -1,3 +1,4 @@
 # !/bin/bash
 cd /var/www/html/bookstore/server
-npm install
+npm install -g pnpm
+pnpm install
