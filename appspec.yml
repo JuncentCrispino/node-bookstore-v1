@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/html/bookstore/server
+    destination: /var/www/html/bookstore_1/server
     overwrite: true
 file_exists_behavior: OVERWRITE
 hooks:
