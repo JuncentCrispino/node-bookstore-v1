@@ -3,18 +3,15 @@ os: linux
 files:
   - source: /
     destination: /var/www/html/bookstore/server
-permissions:
-  - object: /var/www/html/bookstore/server
-    pattern: '**'
-    owner: ubuntu
-    group: ubuntu
+file_exists_behavior: OVERWRITE
 hooks:
   # ApplicationStop:
   # DownloadBundle:
-  BeforeInstall:
-    - location: scripts/before_install.sh
-      timeout: 300
-      runas: root
+  #  BeforeInstall:
+  #    - location: scripts/before_install.sh
+  #      timeout: 300
+  #      runas: root
+  # Install:
   AfterInstall:
     - location: scripts/after_install.sh
       timeout: 300
@@ -22,5 +19,5 @@ hooks:
   ApplicationStart:
     - location: scripts/application_start.sh
       timeout: 300
-      runas: ubuntu
+      runas: root
 # ValidateService:
