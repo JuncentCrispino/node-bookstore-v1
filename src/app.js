@@ -13,6 +13,7 @@ import config from './config/index.js';
 //Initialize express app
 const app = express();
 //declare middlewares
+app.use(express.static('client'));
 app.use(morgan.successHandler);
 app.use(morgan.errorHandler);
 app.use(helmet());
