@@ -31,10 +31,10 @@ export const loginUserWithEmailAndPassword = async (email, password) => {
 };
 
 export const updateUser = async (userId, update, session = null) => {
-  if (await User.isEmailTaken(update.email, userId)) {
+  if (update.email && await User.isEmailTaken(update.email, userId)) {
     throw new ApiError(httpStatus.CONFLICT, 'Email already exist');
   }
-  if (await User.isMobileNoTaken(update.mobileNo, userId)) {
+  if (update.mobileNo && await User.isMobileNoTaken(update.mobileNo, userId)) {
     throw new ApiError(httpStatus.CONFLICT, 'Mobile Number already exist');
   }
   const user = await User.findByIdAndUpdate(userId, update, { session, new: true });

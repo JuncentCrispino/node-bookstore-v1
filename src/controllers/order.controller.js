@@ -58,6 +58,7 @@ export const captureOrder = async (req, res, next) => {
     await session.commitTransaction();
     return res.status(httpStatus.OK).json({ order, user });
   } catch (error) {
+    console.log(error)
     await session.abortTransaction();
     return next(error);
   } finally {
